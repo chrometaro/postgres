@@ -126,7 +126,7 @@ if [ "$1" = 'postgres' ]; then
 		file_env 'POSTGRES_DB' "$POSTGRES_USER"
 
 		export PGPASSWORD="${PGPASSWORD:-$POSTGRES_PASSWORD}"
-		psql=( psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --no-password )
+		psql=( psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" )
 
 		if [ "$POSTGRES_DB" != 'postgres' ]; then
 			"${psql[@]}" --dbname postgres --set db="$POSTGRES_DB" <<-'EOSQL'
